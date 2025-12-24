@@ -1,0 +1,28 @@
+{
+  "name": "hash-table",
+  "version": "1.0.0",
+  "description": "雜湊表（Hash Table）- JavaScript 實作 / Hash Table implementation in JavaScript",
+  "main": "hashTable.js",
+  "scripts": {
+    "start": "node hashTable.js",
+    "example": "node exampleWordCount.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "data-structure",
+    "hash-table",
+    "hash-map",
+    "dictionary"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true
+  }
+}

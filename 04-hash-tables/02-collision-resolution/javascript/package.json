@@ -1,0 +1,32 @@
+{
+  "name": "collision-resolution",
+  "version": "1.0.0",
+  "description": "碰撞解決雜湊表（Collision Resolution Hash Tables）- JavaScript 實作 / Collision resolution hash table implementations in JavaScript",
+  "main": "chaining.js",
+  "scripts": {
+    "start": "node chaining.js",
+    "start:open": "node openAddressing.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "data-structure",
+    "hash-table",
+    "collision-resolution",
+    "chaining",
+    "open-addressing",
+    "linear-probing",
+    "quadratic-probing",
+    "double-hashing"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true
+  }
+}

@@ -1,0 +1,9 @@
+# 雜湊表 Python 專案依賴
+# Hash Table Python Project Dependencies
+
+# 測試框架 - Testing framework
+pytest>=7.0.0
+
+# 可選：程式碼風格檢查 - Optional: Code style checking
+# flake8>=6.0.0
+# mypy>=1.0.0
