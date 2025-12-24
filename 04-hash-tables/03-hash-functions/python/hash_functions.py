@@ -1,21 +1,20 @@
-"""
+"""Docstring start
 雜湊函數（Hash Functions）- Python 實作
 Various hash function implementations
 
-包含整數雜湊與字串雜湊函數
-Includes integer and string hash functions
-"""
+包含整數雜湊與字串雜湊函數 / Includes integer and string hash functions
+"""  # End of docstring
 
-import math
-from typing import Union
+import math  # Import modules and symbols needed by this implementation.
+from typing import Union  # Import modules and symbols needed by this implementation.
 
 
 # ============================================================
 # 整數雜湊函數 Integer Hash Functions
 # ============================================================
 
-def division_hash(key: int, m: int) -> int:
-    """
+def division_hash(key: int, m: int) -> int:  # Define a function/method that implements one operation of this unit.
+    """Docstring start
     除法雜湊（Division Method）
     Division hash function
 
@@ -28,12 +27,12 @@ def division_hash(key: int, m: int) -> int:
 
     Returns:
         雜湊值 0 ~ m-1
-    """
-    return key % m
+    """  # End of docstring
+    return key % m  # Return the computed result to the caller.
 
 
-def multiplication_hash(key: int, m: int, A: float = None) -> int:
-    """
+def multiplication_hash(key: int, m: int, A: float = None) -> int:  # Define a function/method that implements one operation of this unit.
+    """Docstring start
     乘法雜湊（Multiplication Method）
     Multiplication hash function
 
@@ -47,18 +46,18 @@ def multiplication_hash(key: int, m: int, A: float = None) -> int:
 
     Returns:
         雜湊值 0 ~ m-1
-    """
-    if A is None:
+    """  # End of docstring
+    if A is None:  # Evaluate the condition and branch into the appropriate code path.
         # 黃金比例的倒數 - Golden ratio conjugate
-        A = (math.sqrt(5) - 1) / 2
+        A = (math.sqrt(5) - 1) / 2  # Assign or update a variable that represents the current algorithm state.
 
     # k * A mod 1 取小數部分 - Fractional part of k * A
-    fractional = (key * A) % 1
-    return int(m * fractional)
+    fractional = (key * A) % 1  # Assign or update a variable that represents the current algorithm state.
+    return int(m * fractional)  # Return the computed result to the caller.
 
 
-def mid_square_hash(key: int, r: int) -> int:
-    """
+def mid_square_hash(key: int, r: int) -> int:  # Define a function/method that implements one operation of this unit.
+    """Docstring start
     中間平方法（Mid-Square Method）
     Mid-square hash function
 
@@ -71,29 +70,28 @@ def mid_square_hash(key: int, r: int) -> int:
 
     Returns:
         雜湊值 0 ~ 10^r - 1
-    """
-    squared = key * key
-    squared_str = str(squared)
+    """  # End of docstring
+    squared = key * key  # Assign or update a variable that represents the current algorithm state.
+    squared_str = str(squared)  # Assign or update a variable that represents the current algorithm state.
 
     # 確保有足夠位數 - Ensure enough digits
-    if len(squared_str) < r:
-        return squared
+    if len(squared_str) < r:  # Evaluate the condition and branch into the appropriate code path.
+        return squared  # Return the computed result to the caller.
 
     # 取中間 r 位 - Extract middle r digits
-    mid = len(squared_str) // 2
-    start = mid - r // 2
-    end = start + r
+    mid = len(squared_str) // 2  # Assign or update a variable that represents the current algorithm state.
+    start = mid - r // 2  # Assign or update a variable that represents the current algorithm state.
+    end = start + r  # Assign or update a variable that represents the current algorithm state.
 
-    return int(squared_str[start:end])
+    return int(squared_str[start:end])  # Return the computed result to the caller.
 
 
-def folding_hash(key: int, chunk_size: int, m: int) -> int:
-    """
+def folding_hash(key: int, chunk_size: int, m: int) -> int:  # Define a function/method that implements one operation of this unit.
+    """Docstring start
     摺疊法（Folding Method）
     Folding hash function
 
-    將數字分段相加後取餘數
-    Split number into chunks, sum them, take modulo
+    將數字分段相加後取餘數 / Split number into chunks, sum them, take modulo
 
     Args:
         key: 整數鍵
@@ -102,24 +100,24 @@ def folding_hash(key: int, chunk_size: int, m: int) -> int:
 
     Returns:
         雜湊值 0 ~ m-1
-    """
-    key_str = str(abs(key))
-    total = 0
+    """  # End of docstring
+    key_str = str(abs(key))  # Assign or update a variable that represents the current algorithm state.
+    total = 0  # Assign or update a variable that represents the current algorithm state.
 
     # 每 chunk_size 位一段 - Split into chunks
-    for i in range(0, len(key_str), chunk_size):
-        chunk = key_str[i:i + chunk_size]
-        total += int(chunk)
+    for i in range(0, len(key_str), chunk_size):  # Iterate over a range/collection to process each item in sequence.
+        chunk = key_str[i:i + chunk_size]  # Assign or update a variable that represents the current algorithm state.
+        total += int(chunk)  # Assign or update a variable that represents the current algorithm state.
 
-    return total % m
+    return total % m  # Return the computed result to the caller.
 
 
 # ============================================================
 # 字串雜湊函數 String Hash Functions
 # ============================================================
 
-def simple_sum_hash(s: str, m: int) -> int:
-    """
+def simple_sum_hash(s: str, m: int) -> int:  # Define a function/method that implements one operation of this unit.
+    """Docstring start
     簡單加總法（Simple Sum）
     Simple character sum hash
 
@@ -132,12 +130,12 @@ def simple_sum_hash(s: str, m: int) -> int:
 
     Returns:
         雜湊值 0 ~ m-1
-    """
-    return sum(ord(c) for c in s) % m
+    """  # End of docstring
+    return sum(ord(c) for c in s) % m  # Return the computed result to the caller.
 
 
-def polynomial_hash(s: str, a: int = 31, m: int = None) -> int:
-    """
+def polynomial_hash(s: str, a: int = 31, m: int = None) -> int:  # Define a function/method that implements one operation of this unit.
+    """Docstring start
     多項式雜湊（Polynomial Hash）
     Polynomial rolling hash
 
@@ -150,39 +148,38 @@ def polynomial_hash(s: str, a: int = 31, m: int = None) -> int:
         m: 雜湊表大小（None 表示不取餘數）
 
     Returns:
-        雜湊值
-    """
-    h = 0
-    for c in s:
-        h = h * a + ord(c)
-        if m:
-            h %= m
-    return h
+        雜湊值 / Hash value
+    """  # End of docstring
+    h = 0  # Assign or update a variable that represents the current algorithm state.
+    for c in s:  # Iterate over a range/collection to process each item in sequence.
+        h = h * a + ord(c)  # Assign or update a variable that represents the current algorithm state.
+        if m:  # Evaluate the condition and branch into the appropriate code path.
+            h %= m  # Assign or update a variable that represents the current algorithm state.
+    return h  # Return the computed result to the caller.
 
 
-def djb2_hash(s: str) -> int:
-    """
+def djb2_hash(s: str) -> int:  # Define a function/method that implements one operation of this unit.
+    """Docstring start
     DJB2 雜湊（Daniel J. Bernstein）
     DJB2 hash function
 
-    經典且高效的字串雜湊函數
-    Classic and efficient string hash
+    經典且高效的字串雜湊函數 / Classic and efficient string hash
 
     Args:
         s: 字串
 
     Returns:
-        32 位元雜湊值
-    """
-    h = 5381
-    for c in s:
+        32 位元雜湊值 / 32 位元 hash value
+    """  # End of docstring
+    h = 5381  # Assign or update a variable that represents the current algorithm state.
+    for c in s:  # Iterate over a range/collection to process each item in sequence.
         # h * 33 + c
-        h = ((h << 5) + h) + ord(c)
-    return h & 0xFFFFFFFF
+        h = ((h << 5) + h) + ord(c)  # Assign or update a variable that represents the current algorithm state.
+    return h & 0xFFFFFFFF  # Return the computed result to the caller.
 
 
-def sdbm_hash(s: str) -> int:
-    """
+def sdbm_hash(s: str) -> int:  # Define a function/method that implements one operation of this unit.
+    """Docstring start
     SDBM 雜湊
     SDBM hash function
 
@@ -193,17 +190,17 @@ def sdbm_hash(s: str) -> int:
         s: 字串
 
     Returns:
-        32 位元雜湊值
-    """
-    h = 0
-    for c in s:
+        32 位元雜湊值 / 32 位元 hash value
+    """  # End of docstring
+    h = 0  # Assign or update a variable that represents the current algorithm state.
+    for c in s:  # Iterate over a range/collection to process each item in sequence.
         # h * 65599 + c
-        h = ord(c) + (h << 6) + (h << 16) - h
-    return h & 0xFFFFFFFF
+        h = ord(c) + (h << 6) + (h << 16) - h  # Assign or update a variable that represents the current algorithm state.
+    return h & 0xFFFFFFFF  # Return the computed result to the caller.
 
 
-def fnv1a_hash(s: str) -> int:
-    """
+def fnv1a_hash(s: str) -> int:  # Define a function/method that implements one operation of this unit.
+    """Docstring start
     FNV-1a 雜湊（Fowler–Noll–Vo）
     FNV-1a hash function
 
@@ -214,22 +211,22 @@ def fnv1a_hash(s: str) -> int:
         s: 字串
 
     Returns:
-        32 位元雜湊值
-    """
+        32 位元雜湊值 / 32 位元 hash value
+    """  # End of docstring
     # FNV-1a 32-bit 參數 - FNV-1a 32-bit parameters
-    FNV_OFFSET_BASIS = 2166136261
-    FNV_PRIME = 16777619
+    FNV_OFFSET_BASIS = 2166136261  # Assign or update a variable that represents the current algorithm state.
+    FNV_PRIME = 16777619  # Assign or update a variable that represents the current algorithm state.
 
-    h = FNV_OFFSET_BASIS
-    for c in s:
-        h ^= ord(c)
-        h *= FNV_PRIME
-        h &= 0xFFFFFFFF
-    return h
+    h = FNV_OFFSET_BASIS  # Assign or update a variable that represents the current algorithm state.
+    for c in s:  # Iterate over a range/collection to process each item in sequence.
+        h ^= ord(c)  # Assign or update a variable that represents the current algorithm state.
+        h *= FNV_PRIME  # Assign or update a variable that represents the current algorithm state.
+        h &= 0xFFFFFFFF  # Assign or update a variable that represents the current algorithm state.
+    return h  # Return the computed result to the caller.
 
 
-def jenkins_one_at_a_time(s: str) -> int:
-    """
+def jenkins_one_at_a_time(s: str) -> int:  # Define a function/method that implements one operation of this unit.
+    """Docstring start
     Jenkins One-at-a-Time 雜湊
     Jenkins one-at-a-time hash
 
@@ -240,29 +237,28 @@ def jenkins_one_at_a_time(s: str) -> int:
         s: 字串
 
     Returns:
-        32 位元雜湊值
-    """
-    h = 0
-    for c in s:
-        h += ord(c)
-        h += (h << 10)
-        h ^= (h >> 6)
-        h &= 0xFFFFFFFF
+        32 位元雜湊值 / 32 位元 hash value
+    """  # End of docstring
+    h = 0  # Assign or update a variable that represents the current algorithm state.
+    for c in s:  # Iterate over a range/collection to process each item in sequence.
+        h += ord(c)  # Assign or update a variable that represents the current algorithm state.
+        h += (h << 10)  # Assign or update a variable that represents the current algorithm state.
+        h ^= (h >> 6)  # Assign or update a variable that represents the current algorithm state.
+        h &= 0xFFFFFFFF  # Assign or update a variable that represents the current algorithm state.
 
-    h += (h << 3)
-    h ^= (h >> 11)
-    h += (h << 15)
-    return h & 0xFFFFFFFF
+    h += (h << 3)  # Assign or update a variable that represents the current algorithm state.
+    h ^= (h >> 11)  # Assign or update a variable that represents the current algorithm state.
+    h += (h << 15)  # Assign or update a variable that represents the current algorithm state.
+    return h & 0xFFFFFFFF  # Return the computed result to the caller.
 
 
 # ============================================================
 # 雜湊函數分析工具 Hash Function Analysis Tools
 # ============================================================
 
-def analyze_distribution(hash_func, keys: list, m: int) -> dict:
-    """
-    分析雜湊函數的分布情況
-    Analyze distribution of a hash function
+def analyze_distribution(hash_func, keys: list, m: int) -> dict:  # Define a function/method that implements one operation of this unit.
+    """Docstring start
+    分析雜湊函數的分布情況 / Analyze distribution of a hash function
 
     Args:
         hash_func: 雜湊函數 (key, m) -> int
@@ -270,80 +266,80 @@ def analyze_distribution(hash_func, keys: list, m: int) -> dict:
         m: 雜湊表大小
 
     Returns:
-        分布統計資訊
-    """
-    buckets = [0] * m
+        分布統計資訊 / Distribution count 資訊
+    """  # End of docstring
+    buckets = [0] * m  # Access or update the bucket storage used to hold entries or chains.
 
-    for key in keys:
-        h = hash_func(key, m) if callable(hash_func) else hash_func(key) % m
-        buckets[h] += 1
+    for key in keys:  # Iterate over a range/collection to process each item in sequence.
+        h = hash_func(key, m) if callable(hash_func) else hash_func(key) % m  # Compute a hash-based index so keys map into the table's storage.
+        buckets[h] += 1  # Access or update the bucket storage used to hold entries or chains.
 
-    non_empty = sum(1 for b in buckets if b > 0)
-    max_count = max(buckets)
-    min_count = min(buckets)
-    avg_count = len(keys) / m
+    non_empty = sum(1 for b in buckets if b > 0)  # Access or update the bucket storage used to hold entries or chains.
+    max_count = max(buckets)  # Access or update the bucket storage used to hold entries or chains.
+    min_count = min(buckets)  # Access or update the bucket storage used to hold entries or chains.
+    avg_count = len(keys) / m  # Assign or update a variable that represents the current algorithm state.
 
     # 計算標準差 - Calculate standard deviation
-    variance = sum((b - avg_count) ** 2 for b in buckets) / m
-    std_dev = math.sqrt(variance)
+    variance = sum((b - avg_count) ** 2 for b in buckets) / m  # Access or update the bucket storage used to hold entries or chains.
+    std_dev = math.sqrt(variance)  # Assign or update a variable that represents the current algorithm state.
 
-    return {
-        "total_keys": len(keys),
-        "buckets": m,
-        "non_empty_buckets": non_empty,
-        "max_bucket_size": max_count,
-        "min_bucket_size": min_count,
-        "avg_bucket_size": avg_count,
-        "std_deviation": std_dev,
-        "distribution": buckets
-    }
+    return {  # Return the computed result to the caller.
+        "total_keys": len(keys),  # Execute this statement as part of the data structure implementation.
+        "buckets": m,  # Access or update the bucket storage used to hold entries or chains.
+        "non_empty_buckets": non_empty,  # Access or update the bucket storage used to hold entries or chains.
+        "max_bucket_size": max_count,  # Access or update the bucket storage used to hold entries or chains.
+        "min_bucket_size": min_count,  # Access or update the bucket storage used to hold entries or chains.
+        "avg_bucket_size": avg_count,  # Access or update the bucket storage used to hold entries or chains.
+        "std_deviation": std_dev,  # Execute this statement as part of the data structure implementation.
+        "distribution": buckets  # Access or update the bucket storage used to hold entries or chains.
+    }  # Close the current block scope.
 
 
 # ============================================================
 # 範例與測試 Example and Test
 # ============================================================
 
-if __name__ == "__main__":
-    print("=== 雜湊函數示範 Hash Functions Demo ===\n")
+if __name__ == "__main__":  # Evaluate the condition and branch into the appropriate code path.
+    print("=== 雜湊函數示範 Hash Functions Demo ===\n")  # Print a formatted message for the interactive example output.
 
     # 整數雜湊測試 - Integer hash test
-    print("--- 整數雜湊函數 Integer Hash Functions ---")
-    test_key = 123456
+    print("--- 整數雜湊函數 Integer Hash Functions ---")  # Print a formatted message for the interactive example output.
+    test_key = 123456  # Assign or update a variable that represents the current algorithm state.
     m = 97  # 質數
 
-    print(f"Key: {test_key}, m: {m}")
-    print(f"  Division:       {division_hash(test_key, m)}")
-    print(f"  Multiplication: {multiplication_hash(test_key, m)}")
-    print(f"  Mid-Square (4): {mid_square_hash(test_key, 4)}")
-    print(f"  Folding (3):    {folding_hash(test_key, 3, m)}")
+    print(f"Key: {test_key}, m: {m}")  # Print a formatted message for the interactive example output.
+    print(f"  Division:       {division_hash(test_key, m)}")  # Compute the hash-based bucket index for the given key.
+    print(f"  Multiplication: {multiplication_hash(test_key, m)}")  # Compute the hash-based bucket index for the given key.
+    print(f"  Mid-Square (4): {mid_square_hash(test_key, 4)}")  # Compute the hash-based bucket index for the given key.
+    print(f"  Folding (3):    {folding_hash(test_key, 3, m)}")  # Compute the hash-based bucket index for the given key.
 
     # 字串雜湊測試 - String hash test
-    print("\n--- 字串雜湊函數 String Hash Functions ---")
-    test_strings = ["hello", "world", "hash", "table", "python"]
+    print("\n--- 字串雜湊函數 String Hash Functions ---")  # Print a formatted message for the interactive example output.
+    test_strings = ["hello", "world", "hash", "table", "python"]  # Assign or update a variable that represents the current algorithm state.
 
-    print(f"{'String':<10} {'DJB2':<12} {'FNV-1a':<12} {'Polynomial':<12}")
-    print("-" * 50)
-    for s in test_strings:
-        print(f"{s:<10} {djb2_hash(s):<12} {fnv1a_hash(s):<12} {polynomial_hash(s):<12}")
+    print(f"{'String':<10} {'DJB2':<12} {'FNV-1a':<12} {'Polynomial':<12}")  # Print a formatted message for the interactive example output.
+    print("-" * 50)  # Print a formatted message for the interactive example output.
+    for s in test_strings:  # Iterate over a range/collection to process each item in sequence.
+        print(f"{s:<10} {djb2_hash(s):<12} {fnv1a_hash(s):<12} {polynomial_hash(s):<12}")  # Compute the hash-based bucket index for the given key.
 
     # Anagram 問題示範 - Anagram problem demo
-    print("\n--- Anagram 問題 Anagram Problem ---")
-    anagrams = ["abc", "bca", "cab"]
-    print(f"Simple sum (m=100): {[simple_sum_hash(s, 100) for s in anagrams]}")
-    print(f"DJB2:               {[djb2_hash(s) for s in anagrams]}")
+    print("\n--- Anagram 問題 Anagram Problem ---")  # Print a formatted message for the interactive example output.
+    anagrams = ["abc", "bca", "cab"]  # Assign or update a variable that represents the current algorithm state.
+    print(f"Simple sum (m=100): {[simple_sum_hash(s, 100) for s in anagrams]}")  # Compute the hash-based bucket index for the given key.
+    print(f"DJB2:               {[djb2_hash(s) for s in anagrams]}")  # Compute the hash-based bucket index for the given key.
 
     # 分布分析 - Distribution analysis
-    print("\n--- 分布分析 Distribution Analysis ---")
-    import random
-    random.seed(42)
-    random_strings = [f"key_{i}_{random.randint(0, 1000)}" for i in range(1000)]
+    print("\n--- 分布分析 Distribution Analysis ---")  # Print a formatted message for the interactive example output.
+    import random  # Import modules and symbols needed by this implementation.
+    random.seed(42)  # Execute this statement as part of the data structure implementation.
+    random_strings = [f"key_{i}_{random.randint(0, 1000)}" for i in range(1000)]  # Assign or update a variable that represents the current algorithm state.
 
-    stats = analyze_distribution(
-        lambda k, m: djb2_hash(k) % m,
-        random_strings,
-        128
-    )
-    print(f"DJB2 with 1000 keys, 128 buckets:")
-    print(f"  Non-empty buckets: {stats['non_empty_buckets']}")
-    print(f"  Max bucket size:   {stats['max_bucket_size']}")
-    print(f"  Std deviation:     {stats['std_deviation']:.3f}")
+    stats = analyze_distribution(  # Assign or update a variable that represents the current algorithm state.
+        lambda k, m: djb2_hash(k) % m,  # Compute the hash-based bucket index for the given key.
+        random_strings,  # Execute this statement as part of the data structure implementation.
+        128  # Execute this statement as part of the data structure implementation.
+    )  # Execute this statement as part of the data structure implementation.
+    print(f"DJB2 with 1000 keys, 128 buckets:")  # Print a formatted message for the interactive example output.
+    print(f"  Non-empty buckets: {stats['non_empty_buckets']}")  # Print a formatted message for the interactive example output.
+    print(f"  Max bucket size:   {stats['max_bucket_size']}")  # Print a formatted message for the interactive example output.
+    print(f"  Std deviation:     {stats['std_deviation']:.3f}")  # Print a formatted message for the interactive example output.
