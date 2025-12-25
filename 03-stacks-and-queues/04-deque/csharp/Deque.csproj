@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk"> <!-- Minimal SDK-style project file for a self-contained demo (no external packages). -->
+
+  <PropertyGroup> <!-- Project-wide build settings. -->
+    <TargetFramework>net8.0</TargetFramework> <!-- Match the repo's modern .NET target. -->
+    <OutputType>Exe</OutputType> <!-- Build a console executable. -->
+    <ImplicitUsings>disable</ImplicitUsings> <!-- Keep using directives explicit for teaching clarity. -->
+    <Nullable>enable</Nullable> <!-- Enable nullable reference types for safer code. -->
+    <LangVersion>latest</LangVersion> <!-- Use the latest C# language version available. -->
+    <RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources> <!-- Allow offline/sandbox builds when nuget.org is unreachable (no external packages used here). -->
+  </PropertyGroup> <!-- End of settings group. -->
+
+</Project> <!-- End of project file. -->
+
