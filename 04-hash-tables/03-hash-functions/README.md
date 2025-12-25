@@ -214,6 +214,65 @@ b ∈ {0, 1, ..., p-1}（隨機選擇）
 | Python | `test_hash_functions.py` | 單元測試與分布測試 |
 | 其他語言 | ... | 相同結構 |
 
+## 7.1 程式碼（各語言）
+
+### Python
+
+在 `04-hash-tables/03-hash-functions/python/`：
+
+```bash
+python3 -m unittest -v
+```
+
+### Java
+
+在 `04-hash-tables/03-hash-functions/java/`：
+
+```bash
+javac HashFunctions.java UniversalHashing.java HashFunctionsTest.java
+java HashFunctionsTest
+java HashFunctions
+```
+
+### JavaScript（Node.js）
+
+在 `04-hash-tables/03-hash-functions/javascript/`：
+
+```bash
+node hashFunctionsDemo.js
+node --test
+```
+
+### C
+
+在 `04-hash-tables/03-hash-functions/c/`：
+
+```bash
+make run
+make test
+make clean
+```
+
+### C++
+
+在 `04-hash-tables/03-hash-functions/cpp/`：
+
+```bash
+cmake -S . -B build
+cmake --build build
+./build/hash_functions_demo
+ctest --test-dir build --output-on-failure
+```
+
+### C#
+
+在 `04-hash-tables/03-hash-functions/csharp/`：
+
+```bash
+dotnet run
+dotnet run -- --test
+```
+
 ## 8. 考試重點
 
 1. **計算題**

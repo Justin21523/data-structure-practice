@@ -4,7 +4,7 @@
 
 - `hash_functions.py`：多種雜湊函數（整數/字串）示範與工具函式。
 - `universal_hashing.py`：通用雜湊（universal hashing）與相關測試/示範。
-- `test_hash_functions.py`：pytest 測試（範圍、確定性、分佈/碰撞機率等）。
+- `test_hash_functions.py`：`unittest` 測試（範圍、確定性、分佈/碰撞機率等）。
 
 ## 目的與定位
 
@@ -33,11 +33,10 @@ for c in s:
 在 `04-hash-tables/03-hash-functions/python/`：
 
 ```bash
-python -m pytest
+python3 -m unittest -v
 ```
 
 ## 建議延伸
 
 - 嘗試用不同的 `m`（尤其是質數 vs 2 的冪次）比較分佈差異。
 - 為你的雜湊表單元（例如 `01-basic-hash-table`）替換不同 hash function，觀察碰撞率與 rehash 次數。
-

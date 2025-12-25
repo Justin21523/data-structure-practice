@@ -2,7 +2,7 @@
 雜湊函數單元測試 / Hash Functions Unit Tests
 """  # End of docstring
 
-import pytest  # Import modules and symbols needed by this implementation.
+import unittest  # Use Python's built-in unittest so tests run in restricted/offline environments.
 import random  # Import modules and symbols needed by this implementation.
 from hash_functions import (  # Import modules and symbols needed by this implementation.
     division_hash, multiplication_hash, mid_square_hash, folding_hash,  # Execute this statement as part of the data structure implementation.
@@ -14,7 +14,7 @@ from universal_hashing import (  # Import modules and symbols needed by this imp
 )  # Execute this statement as part of the data structure implementation.
 
 
-class TestIntegerHashFunctions:  # Declare a class that encapsulates the data structure state and behavior.
+class TestIntegerHashFunctions(unittest.TestCase):  # Use unittest.TestCase so unittest discovery can run these tests.
     """整數雜湊函數測試 - Integer hash function tests"""
 
     def test_division_hash_range(self):  # Define a function/method that implements one operation of this unit.
@@ -61,7 +61,7 @@ class TestIntegerHashFunctions:  # Declare a class that encapsulates the data st
         assert 0 <= h < m  # Assert an expected condition for this test case.
 
 
-class TestStringHashFunctions:  # Declare a class that encapsulates the data structure state and behavior.
+class TestStringHashFunctions(unittest.TestCase):  # Use unittest.TestCase so unittest discovery can run these tests.
     """字串雜湊函數測試 - String hash function tests"""
 
     def test_simple_sum_hash_range(self):  # Define a function/method that implements one operation of this unit.
@@ -125,7 +125,7 @@ class TestStringHashFunctions:  # Declare a class that encapsulates the data str
         assert polynomial_hash("", 31, 100) == 0  # Assert an expected condition for this test case.
 
 
-class TestHashDistribution:  # Declare a class that encapsulates the data structure state and behavior.
+class TestHashDistribution(unittest.TestCase):  # Use unittest.TestCase so unittest discovery can run these tests.
     """雜湊分布測試 - Hash distribution tests"""
 
     def test_djb2_distribution(self):  # Define a function/method that implements one operation of this unit.
@@ -154,7 +154,7 @@ class TestHashDistribution:  # Declare a class that encapsulates the data struct
         assert stats["std_deviation"] < 5  # Assert an expected condition for this test case.
 
 
-class TestUniversalHashing:  # Declare a class that encapsulates the data structure state and behavior.
+class TestUniversalHashing(unittest.TestCase):  # Use unittest.TestCase so unittest discovery can run these tests.
     """通用雜湊測試 - Universal hashing tests"""
 
     def test_hash_range(self):  # Define a function/method that implements one operation of this unit.
@@ -203,7 +203,7 @@ class TestUniversalHashing:  # Declare a class that encapsulates the data struct
         assert isinstance(h, int)  # Assert an expected condition for this test case.
 
 
-class TestUniversalStringHashing:  # Declare a class that encapsulates the data structure state and behavior.
+class TestUniversalStringHashing(unittest.TestCase):  # Use unittest.TestCase so unittest discovery can run these tests.
     """字串通用雜湊測試 - Universal string hashing tests"""
 
     def test_hash_range(self):  # Define a function/method that implements one operation of this unit.
@@ -223,7 +223,7 @@ class TestUniversalStringHashing:  # Declare a class that encapsulates the data 
         assert h1 == h2  # Assert an expected condition for this test case.
 
 
-class TestUniversalHashTable:  # Declare a class that encapsulates the data structure state and behavior.
+class TestUniversalHashTable(unittest.TestCase):  # Use unittest.TestCase so unittest discovery can run these tests.
     """通用雜湊表測試 - Universal hash table tests"""
 
     def test_basic_operations(self):  # Define a function/method that implements one operation of this unit.
@@ -267,4 +267,4 @@ class TestUniversalHashTable:  # Declare a class that encapsulates the data stru
 
 
 if __name__ == "__main__":  # Evaluate the condition and branch into the appropriate code path.
-    pytest.main([__file__, "-v"])  # Execute this statement as part of the data structure implementation.
+    unittest.main(verbosity=2)  # Run unittest with verbose output for a study-friendly test log.
