@@ -11,12 +11,12 @@
 
 Run commands from the unit/language directory you’re editing.
 
-- Python: `python hash_table.py`; tests: `python -m pytest` (install deps when present: `pip install -r requirements.txt`).
-- JavaScript (Node): `npm install`; tests: `npm test`; examples: `npm run start` / `npm run example`.
-- Java (Maven): `mvn test`; run demos via `mvn exec:java` (see the unit’s `pom.xml` for configured `mainClass`).
+- Python: run demos with `python3 *.py`; tests: `python3 -m unittest -v` (repo prefers stdlib test runners; no network installs).
+- JavaScript (Node): run demos with `node *.js`; tests: `node --test` (no `npm install` expected for most units).
+- Java: compile with `javac *.java`; run demos/tests with `java MainClass` / `java *Test` (no Maven required).
 - C: `make` (build), `make test`, `make run` (`c/Makefile`).
 - C++: `cmake -S . -B build && cmake --build build && ctest --test-dir build`.
-- C#: `dotnet test` / `dotnet run` in the `csharp/` project.
+- C#: `dotnet run` / `dotnet run -- --test` in the `csharp/` project (optionally add `DOTNET_CLI_HOME=out` in restricted environments).
 
 ## Coding Style & Naming Conventions
 

@@ -18,6 +18,13 @@ CMakeFiles/
 CMakeCache.txt
 Makefile.in
 
+# Unit executables (no extension)
+*_demo
+test_*
+!test_*.c
+!test_*.cpp
+!test_*.py
+
 # Java
 *.class
 *.jar
